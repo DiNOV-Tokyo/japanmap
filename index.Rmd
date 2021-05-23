@@ -12,6 +12,8 @@ runitime: shiny
 library(flexdashboard)
 library(tidyverse)
 library(leaflet)
+library(rvest)
+library(DT)
 ```
 
 Volcano
@@ -43,10 +45,11 @@ dat %>%
 Japan 100 famous mountain
 ===============================================
 
+Column {data-width=600}
+--------------------------------------
+
 ```{r 100moutain}
 
-library(rvest)
-library(leaflet)
 x <- read.csv("http://www.dinov.tokyo/Data/JP_Pref/JapanSummit100.csv", header = TRUE, fileEncoding="UTF-8")
 lat <- as.numeric(as.character(x$緯度))
 lon <- as.numeric(as.character(x$経度))
@@ -55,6 +58,22 @@ dt %>%
   leaflet %>% 
   addTiles() %>% 
   addCircleMarkers(lat=~lat, lng=~lon, radius = ~elev/1000, label = ~Name) 
+
+
+```
+
+Column
+-----------------------------------------
+
+```{r mountain_table}
+
+datatable(dt, extensions = 'FixedColumns',
+  options = list(
+    dom = 't',
+    scrollX = TRUE,
+    scrollCollapse = TRUE
+  )
+)
 
 
 ```
