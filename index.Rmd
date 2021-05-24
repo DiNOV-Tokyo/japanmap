@@ -36,8 +36,10 @@ dat %>%
   separate(lng, into=c("lng_d", "lng_m", "lng_s"), sep="([°′″])") %>% 
   mutate(lng=as.numeric(lng_d) + as.numeric(lng_m)/60 + as.numeric(lng_s)/3600) %>% 
   leaflet() %>% 
-  addTiles() %>% 
-  addCircleMarkers(lat=~lat, lng=~lng, radius = ~elev/300, label = ~NAME) 
+  addTiles(
+    urlTemplate = 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
+  ) %>% 
+  addCircleMarkers(lat=~lat, lng=~lng, radius = ~elev/300, label = ~NAME, color="red") 
 
 
 ```
