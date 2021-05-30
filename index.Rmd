@@ -14,7 +14,7 @@ library(rvest)
 library(DT)
 ```
 
-Volcano
+## Volcano
 ======================================================
 
 Column 
@@ -42,11 +42,13 @@ dat %>%
 
 ```
 
-Japan 100 famous mountain(2021)
+## Japan 100 famous mountain(2021)
 ===============================================
 
 Column {data-width=60%}
 --------------------------------------
+
+### Map
 
 ```{r 100moutain}
 
@@ -64,6 +66,7 @@ dt %>%
 
 Column {data-width=40%}
 -----------------------------------------
+### Table
 
 ```{r mountain_table}
 
