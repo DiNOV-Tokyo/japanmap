@@ -4,8 +4,6 @@ output:
   flexdashboard::flex_dashboard:
     orientation: columns
     vertical_layout: fill
-date: "`r Sys.Date()`"
-runitime: shiny
 ---
 
 ```{r setup, include=FALSE}
@@ -44,10 +42,10 @@ dat %>%
 
 ```
 
-Japan 100 famous mountain
+Japan 100 famous mountain(2021)
 ===============================================
 
-Column {data-width=600}
+Column {data-width=60%}
 --------------------------------------
 
 ```{r 100moutain}
@@ -64,18 +62,20 @@ dt %>%
 
 ```
 
-Column
+Column {data-width=40%}
 -----------------------------------------
 
 ```{r mountain_table}
 
-datatable(dt, extensions = 'FixedColumns',
-  options = list(
-    dom = 't',
-    scrollX = TRUE,
-    scrollCollapse = TRUE
-  )
-)
+datatable(dt,
+          rownames=FALSE, 
+          filter='top', 
+          options=list(
+            autoWidth=TRUE,
+            pageLength=16
+          )
+        )
+
 
 
 ```
