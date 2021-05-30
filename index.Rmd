@@ -67,7 +67,8 @@ Column {data-width=40%}
 
 ```{r mountain_table}
 
-datatable(dt,
+dt %>% 
+  datatable(
           rownames=FALSE, 
           filter='top', 
           options=list(
