@@ -83,3 +83,46 @@ dt %>%
 
 
 ```
+
+
+## Japan 100 famous water(2021)
+===============================================
+
+Column {data-width=60%}
+--------------------------------------
+
+### Map
+
+```{r water_map}}
+
+x <- read.csv("http://www.dinov.tokyo/Data/JP_Pref/JapanWater100.csv", header = TRUE, fileEncoding="UTF-8")
+lat <- as.numeric(as.character(x$北緯))
+lon <- as.numeric(as.character(x$東経))
+dt_w <- data.frame("Name"=x$名称, "lat"=lat, "lon"=lon)
+dt_w %>% 
+  leaflet %>% 
+  addTiles() %>% 
+  addCircleMarkers(lat=~lat, lng=~lon, radius = 1, label = ~Name) 
+
+
+```
+
+Column {data-width=40%}
+-----------------------------------------
+### Table
+
+```{r water_table}
+
+dt_w %>% 
+  datatable(
+          rownames=FALSE, 
+          filter='top', 
+          options=list(
+            autoWidth=TRUE,
+            pageLength=16
+          )
+        )
+
+
+
+```
