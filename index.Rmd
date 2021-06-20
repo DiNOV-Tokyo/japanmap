@@ -126,3 +126,22 @@ dt_w %>%
 
 
 ```
+
+## 稲城　医療機関
+==========================================
+
+```{r inagi_hospital}
+
+library(tidyverse)
+library(leaflet)
+
+dat <- read.csv("012.csv", fileEncoding = "UTF-8", header=TRUE) 
+
+dat %>% 
+  select(Name="名称", lat="緯度", lng="経度", tel="電話番号") %>% 
+  leaflet() %>% 
+  addTiles() %>% 
+  addMarkers(lat = ~lat, lng = ~lng, popup = ~ paste(Name, tel))
+
+
+```
