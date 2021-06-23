@@ -145,3 +145,22 @@ dat %>%
 
 
 ```
+
+## 稲城　観光施設
+==========================================
+
+```{r inagi_sightseeing}
+
+library(tidyverse)
+library(leaflet)
+
+dat <- read.csv("013.csv", fileEncoding = "UTF-8", header=TRUE) 
+
+dat %>% 
+  select(Name="名称", lat="緯度", lng="経度", addr="住所") %>% 
+  leaflet() %>% 
+  addTiles() %>% 
+  addMarkers(lat = ~lat, lng = ~lng, popup = ~ paste(Name, addr))
+
+
+```
